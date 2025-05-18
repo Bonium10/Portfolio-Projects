@@ -1,3 +1,19 @@
+select *
+from coviddeaths1
+where continent <>'' 
+order by 3,4 ;
+
+select *
+from covidvaccination
+order by 3,4 ;
+
+#Data I am using
+SELECT location, date, total_cases, new_cases, total_deaths, population
+FROM coviddeaths1
+WHERE location = 'Bangladesh'
+AND continent <> ''
+ORDER BY 1,2;
+
 #Looking at the Total Cases vs Total Deaths
 #shows the likelihood of dying if you contract covid in my country
 
@@ -30,7 +46,7 @@ WHERE continent <> ''
 GROUP BY location
 ORDER BY TotalDeathCount DESC;
 
-#Let's break things down by continent
+#Let break things down by continent
 #Showing the continents with the highest death counts per population
 
 SELECT continent, MAX(total_deaths) AS TotalDeathCount
