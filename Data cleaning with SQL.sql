@@ -3,10 +3,6 @@
 select *
 from layoffs;
 
--- 1. Remove duplicates
--- 2. Standardize the Data
--- 3. Null Values or blank values
--- 4. Remove any columns
 
 -- Remove duplicates
 
