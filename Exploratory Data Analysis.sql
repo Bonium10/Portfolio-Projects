@@ -27,11 +27,14 @@ where percentage_laid_off =1
 order by funds_raised_millions desc;
 
 
+
 -- Companies with the biggest single Layoff
 
 SELECT company, total_laid_off
 FROM layoffs_staging
 ORDER BY 2 DESC;
+
+
 
 -- Companies with the most Total Layoffs
 
@@ -39,6 +42,8 @@ select company, sum(total_laid_off)
 from layoffs_staging2
 group by company
 order by 2 desc;
+
+
 
 -- By location
 
@@ -49,6 +54,8 @@ order by 2 desc;
 
 select *
 from layoffs_staging2;
+
+
 
 -- Total laid off in past years on the dataset
 
@@ -69,7 +76,7 @@ order by 2 desc;
 
 
 
--- Rolling Total of Layoffs Per Month
+-- Rolling Total Layoffs Per Month
 
 select substring(`date`, 1,7) as `Month`, sum(total_laid_off) as Total_laid_off
 from layoffs_staging2
@@ -78,7 +85,8 @@ group by `Month`
 order by 1 asc;
 
 
--- now use it in a CTE so we can query off of it
+
+-- Now using it in a CTE so we can query off of it
 
 with Rolling_total as
 (
@@ -91,6 +99,8 @@ order by 1 asc
 select `Month`, Total_laid_off,
 sum(Total_laid_off) over(order by `Month`) as rolling_total
 from Rolling_total;
+
+
 
 -- Companies that laid off the most per year
 
